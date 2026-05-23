@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors -->
+    <color name="purple_primary">#9B59B6</color>
+    <color name="purple_light">#F0E6FF</color>
+    <color name="purple_dark">#6A0DAD</color>
+
+    <color name="pink_primary">#FF6B9D</color>
+    <color name="pink_light">#FBEAF0</color>
+
+    <color name="blue_primary">#4F8EF7</color>
+    <color name="blue_light">#EEF4FF</color>
+
+    <color name="green_primary">#2ECC40</color>
+    <color name="green_light">#F0FFF4</color>
+
+    <color name="orange_primary">#FF9500</color>
+    <color name="orange_light">#FFF3CD</color>
+
+    <color name="teal_primary">#4ECDC4</color>
+    <color name="teal_light">#E8FAF9</color>
+
+    <color name="red_primary">#FF4757</color>
+    <color name="red_light">#FFF0F0</color>
+
+    <color name="yellow_primary">#FFE66D</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_spelling">#FFF8E7</color>
+    <color name="bg_math">#EEF4FF</color>
+    <color name="bg_puzzle">#F0FFF4</color>
+    <color name="bg_dashboard">#F7F0FF</color>
+    <color name="bg_home">#FFF8F0</color>
+
+    <!-- Neutral -->
+    <color name="white">#FFFFFF</color>
+    <color name="text_dark">#222222</color>
+    <color name="text_muted">#9090A8</color>
+    <color name="border_light">#E0E0E8</color>
+    <color name="slot_empty_border">#D0D0E0</color>
+    <color name="slot_filled_border">#4ECDC4</color>
+    <color name="slot_correct_border">#44D62C</color>
+    <color name="slot_wrong_border">#FF4757</color>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- BACKGROUND -->
+
+
+    <!-- SCORE TEXT -->
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/front_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/resultScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Score: 0/10"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:fontFamily="@font/agbalumo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.30"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <!-- MENU PANEL IMAGE -->
+
+
+    <!-- TRY AGAIN BUTTON -->
+
+
+    <!-- CHANGE CATEGORY BUTTON -->
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="420dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/menu_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultScore" />
+
+    <Button
+        android:id="@+id/buttonTryAgain"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="328dp"
+        android:text="TRY AGAIN"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView17" />
+
+    <Button
+        android:id="@+id/buttonChangeCategory"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:text="CHANGE CATEGORY"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/buttonTryAgain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"/>
+
+
+    <!-- MAIN MENU BUTTON -->
+    <Button
+        android:id="@+id/buttonMainMenu"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:text="MAIN MENU"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/buttonChangeCategory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

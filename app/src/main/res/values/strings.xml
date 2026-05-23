@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LearnQuest</string>
+
+    <!-- Home Screen -->
+    <string name="home_greeting">Hi, Paul Ace! 👋</string>
+    <string name="home_subtitle">Ready to learn today?</string>
+    <string name="play_spelling">Spelling Game</string>
+    <string name="play_math">Math Battle</string>
+    <string name="play_puzzle">Puzzle Game</string>
+    <string name="play_quiz">Quizzes</string>
+    <string name="my_progress">My Progress</string>
+
+    <!-- Spelling Game -->
+    <string name="spelling_title">Spelling Challenge</string>
+    <string name="spelling_instruction">Tap letters to spell the word!</string>
+    <string name="btn_check">Check!</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_hint">Hint 💡</string>
+    <string name="correct_msg">Awesome! 🎉</string>
+    <string name="wrong_msg">Try again! 💪</string>
+
+    <!-- Math Battle -->
+    <string name="math_title">Math Battle</string>
+    <string name="math_you">YOU</string>
+    <string name="math_robo">ROBO</string>
+    <string name="math_vs">VS</string>
+    <string name="time_left">Time Left</string>
+    <string name="you_win">You Win! 🏆</string>
+    <string name="robo_wins">Robo Wins! 🤖</string>
+    <string name="play_again">Play Again! 🎮</string>
+
+    <!-- Puzzle Game -->
+    <string name="puzzle_title">Puzzle Challenge</string>
+    <string name="tab_patterns">Patterns</string>
+    <string name="tab_match">Match</string>
+    <string name="tab_odd">Odd One Out</string>
+    <string name="btn_reset">Reset 🔄</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">My Progress</string>
+    <string name="streak_label">Day Streak</string>
+    <string name="stars_label">Stars Earned</string>
+    <string name="correct_label">Correct Rate</string>
+    <string name="games_label">Games Played</string>
+    <string name="badges_title">Badges Earned</string>
+    <string name="game_progress_title">Game Progress</string>
+</resources>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_puzzle"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_white"
+                android:text="←"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_white"
+                android:paddingLeft="14dp" android:paddingRight="14dp"
+                android:paddingTop="6dp" android:paddingBottom="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="⭐" android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/tvStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green_primary"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/heart1" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+                <TextView android:id="@+id/heart2" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+                <TextView android:id="@+id/heart3" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Level Badge -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center" android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_green"
+                android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:paddingTop="4dp" android:paddingBottom="4dp"
+                android:text="🧩 PUZZLE CHALLENGE — LEVEL 1"
+                android:textColor="@color/white"
+                android:textSize="12sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Mode Tabs -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tabPatterns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tab_active"
+                android:paddingLeft="14dp" android:paddingRight="14dp"
+                android:paddingTop="8dp" android:paddingBottom="8dp"
+                android:text="🔢 Patterns"
+                android:textColor="@color/white"
+                android:textSize="13sp" android:textStyle="bold"
+                android:layout_marginEnd="8dp"
+                android:clickable="true" android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/tabMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tab_inactive"
+                android:paddingLeft="14dp" android:paddingRight="14dp"
+                android:paddingTop="8dp" android:paddingBottom="8dp"
+                android:text="🖼 Match"
+                android:textColor="@color/green_primary"
+                android:textSize="13sp" android:textStyle="bold"
+                android:layout_marginEnd="8dp"
+                android:clickable="true" android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/tabOdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tab_inactive"
+                android:paddingLeft="14dp" android:paddingRight="14dp"
+                android:paddingTop="8dp" android:paddingBottom="8dp"
+                android:text="🔍 Odd One"
+                android:textColor="@color/green_primary"
+                android:textSize="13sp" android:textStyle="bold"
+                android:clickable="true" android:focusable="true"/>
+        </LinearLayout>
+
+        <!-- Puzzle Card -->
+        <LinearLayout
+            android:id="@+id/puzzleCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tvPuzzleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What comes next?"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Sequence/Grid goes here dynamically -->
+            <LinearLayout
+                android:id="@+id/puzzleContentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tvInstruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap the missing piece below!"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted"
+                android:letterSpacing="0.08"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+        <!-- Choices Section -->
+        <LinearLayout
+            android:id="@+id/choicesSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHOOSE YOUR ANSWER"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/choicesRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Progress Dots -->
+        <LinearLayout
+            android:id="@+id/progressDotsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:id="@+id/btnHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_outline_pink"
+                android:padding="13dp"
+                android:text="💡 Hint"
+                android:textColor="@color/orange_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/btnReset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_outline_pink"
+                android:padding="13dp"
+                android:text="🔄 Reset"
+                android:textColor="@color/pink_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+        <!-- Result Card -->
+        <LinearLayout
+            android:id="@+id/resultCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView android:id="@+id/tvREmoji" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🏆" android:textSize="68sp"/>
+            <TextView android:id="@+id/tvRTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Puzzle Master!"
+                android:textSize="32sp" android:textStyle="bold"
+                android:textColor="@color/green_primary" android:layout_marginTop="8dp"/>
+            <TextView android:id="@+id/tvRSub" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="You solved all the puzzles!"
+                android:textSize="14sp" android:textColor="@color/text_muted"
+                android:layout_marginBottom="16dp"/>
+
+            <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:columnCount="2" android:rowCount="2" android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/green_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvRSolved" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/green_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SOLVED" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/green_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvRStars" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/green_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="STARS" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/green_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvRHints" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/green_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="HINTS USED" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/green_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvRStreak" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/green_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="BEST STREAK" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/btnPlayAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_primary_green"
+                android:padding="16dp"
+                android:text="Play Again! 🎮"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

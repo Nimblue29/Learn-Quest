@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_spelling"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_white"
+                android:text="←"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <!-- Stars pill -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_white"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="⭐" android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/tvStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/orange_primary"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <!-- Lives -->
+            <LinearLayout
+                android:id="@+id/livesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView android:id="@+id/heart1" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+                <TextView android:id="@+id/heart2" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+                <TextView android:id="@+id/heart3" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Progress Bar -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_progress_track"
+            android:layout_marginBottom="6dp">
+            <View
+                android:id="@+id/progressFill"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_progress_fill_pink"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <TextView android:id="@+id/tvWordNum" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="WORD 1 OF 5"
+                android:textSize="11sp" android:textStyle="bold" android:textColor="@color/text_muted"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+            <TextView android:id="@+id/tvProgressPct" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0%"
+                android:textSize="11sp" android:textStyle="bold" android:textColor="@color/text_muted"/>
+        </LinearLayout>
+
+        <!-- Level Badge -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center" android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_pink"
+                android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:paddingTop="4dp" android:paddingBottom="4dp"
+                android:text="🌟 LEVEL 1 — ANIMALS"
+                android:textColor="@color/white"
+                android:textSize="12sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spellingContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Word Image Card -->
+            <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_white"
+            android:padding="16dp"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvWordEmoji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🐱"
+                    android:textSize="72sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tvWordLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="What is this?"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_muted"
+                    android:letterSpacing="0.1"/>
+            </LinearLayout>
+
+            <!-- Hint Button -->
+            <TextView
+                android:id="@+id/btnHint"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="top|end"
+                android:background="@drawable/bg_pill_orange"
+                android:text="💡"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+        </FrameLayout>
+
+        <!-- Drop Zone Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TAP LETTERS TO SPELL THE WORD!"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_muted"
+            android:gravity="center"
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Drop Slots -->
+        <LinearLayout
+            android:id="@+id/dropSlotsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="14dp"/>
+
+        <!-- Letter Pool -->
+        <GridLayout
+            android:id="@+id/letterPoolLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/btnClear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_outline_pink"
+                android:padding="14dp"
+                android:text="🗑 Clear"
+                android:textColor="@color/pink_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/btnCheck"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/bg_btn_primary_pink"
+                android:padding="14dp"
+                android:text="✅ Check!"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+            </LinearLayout>
+
+            <!-- Word Progress Dots -->
+            <LinearLayout
+                android:id="@+id/progressDotsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp"/>
+
+        </LinearLayout>
+
+        <!-- Result Card -->
+        <LinearLayout
+            android:id="@+id/resultCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView android:id="@+id/tvREmoji" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🏆" android:textSize="68sp"/>
+            <TextView android:id="@+id/tvRTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Spelling Bee!"
+                android:textSize="32sp" android:textStyle="bold"
+                android:textColor="@color/pink_primary" android:layout_marginTop="8dp"/>
+            <TextView android:id="@+id/tvRSub" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="You spelled all the words!"
+                android:textSize="14sp" android:textColor="@color/text_muted"
+                android:layout_marginBottom="16dp"/>
+
+            <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:columnCount="2" android:rowCount="2" android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/pink_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvRSpelled" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/pink_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="WORDS SPELLED" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/pink_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvRStars" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="0"
+                        android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/pink_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="STARS" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/btnPlayAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_primary_pink"
+                android:padding="16dp"
+                android:text="Play Again! 🎮"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

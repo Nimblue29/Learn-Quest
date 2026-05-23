@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bg_slot_empty.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/>
+    <stroke android:width="3dp" android:color="#D0D0E0" android:dashWidth="6dp" android:dashGap="3dp"/>
+    <corners android:radius="14dp"/>
+</shape>

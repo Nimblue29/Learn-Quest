@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_math"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_white"
+                android:text="←"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_white"
+                android:paddingLeft="14dp" android:paddingRight="14dp"
+                android:paddingTop="6dp" android:paddingBottom="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="⭐" android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/tvTotalScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_primary"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <LinearLayout
+                android:id="@+id/livesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/heart1" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+                <TextView android:id="@+id/heart2" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+                <TextView android:id="@+id/heart3" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="❤️" android:textSize="22sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Level Badge -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center" android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_blue"
+                android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:paddingTop="4dp" android:paddingBottom="4dp"
+                android:text="⚔️ MATH BATTLE — LEVEL 1"
+                android:textColor="@color/white"
+                android:textSize="12sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Timer -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:background="@drawable/bg_timer_track"
+            android:layout_marginBottom="4dp">
+            <View
+                android:id="@+id/timerFill"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_timer_fill_blue"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="TIME LEFT"
+                android:textSize="11sp" android:textStyle="bold" android:textColor="@color/text_muted"/>
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tvTimeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10s"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_primary"/>
+        </LinearLayout>
+
+        <!-- VS Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
+
+            <!-- Player Card -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_white"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🧒" android:textSize="34sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="YOU" android:textSize="12sp" android:textStyle="bold"
+                    android:textColor="@color/text_muted"/>
+                <TextView
+                    android:id="@+id/tvPlayerScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark"/>
+                <TextView
+                    android:id="@+id/tvStreakBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill_orange"
+                    android:paddingLeft="8dp" android:paddingRight="8dp"
+                    android:paddingTop="2dp" android:paddingBottom="2dp"
+                    android:text="🔥 x2"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" android:textStyle="bold"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <!-- VS Badge -->
+            <TextView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_card_white"
+                android:text="VS"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/pink_primary"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+            <!-- Robo Card -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_white"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🤖" android:textSize="34sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="ROBO" android:textSize="12sp" android:textStyle="bold"
+                    android:textColor="@color/text_muted"/>
+                <TextView
+                    android:id="@+id/tvRoboScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Question Card -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_white"
+            android:padding="20dp"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SOLVE IT FAST!"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_muted"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 + 4 = ?"
+                    android:textSize="46sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_dark"/>
+
+                <TextView
+                    android:id="@+id/tvHintRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_muted"/>
+            </LinearLayout>
+
+            <!-- Feedback Toast -->
+            <TextView
+                android:id="@+id/tvFeedbackToast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_pill_green"
+                android:paddingLeft="20dp" android:paddingRight="20dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp"
+                android:text="+10"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <!-- Answer Buttons Grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/btnAns1"
+                    style="@style/AnswerButton"
+                    android:text="7"
+                    android:layout_marginEnd="10dp"/>
+
+                <TextView
+                    android:id="@+id/btnAns2"
+                    style="@style/AnswerButton"
+                    android:text="8"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnAns3"
+                    style="@style/AnswerButton"
+                    android:text="9"
+                    android:layout_marginEnd="10dp"/>
+
+                <TextView
+                    android:id="@+id/btnAns4"
+                    style="@style/AnswerButton"
+                    android:text="10"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Progress Dots -->
+        <LinearLayout
+            android:id="@+id/progressDotsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Result Card (hidden until game ends) -->
+        <LinearLayout
+            android:id="@+id/resultCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_white"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView android:id="@+id/tvResultEmoji"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🏆" android:textSize="68sp"/>
+            <TextView android:id="@+id/tvResultTitle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="You Win!"
+                android:textSize="34sp" android:textStyle="bold"
+                android:textColor="@color/blue_primary" android:layout_marginTop="8dp"/>
+            <TextView android:id="@+id/tvResultSub"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Amazing math skills!"
+                android:textSize="14sp" android:textColor="@color/text_muted"
+                android:layout_marginBottom="16dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/blue_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvStatCorrect"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0/7" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/blue_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="CORRECT" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/blue_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvStatScore"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/blue_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="STARS" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/blue_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvStatStreak"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/blue_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="BEST STREAK" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_columnWeight="1" android:layout_margin="5dp"
+                    android:background="@color/blue_light" android:padding="12dp"
+                    android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/tvStatTime"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0s" android:textSize="26sp" android:textStyle="bold"
+                        android:textColor="@color/blue_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="AVG SPEED" android:textSize="10sp" android:textStyle="bold"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+            </GridLayout>
+
+            <TextView
+                android:id="@+id/btnPlayAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_primary_blue"
+                android:padding="16dp"
+                android:text="Play Again! 🎮"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
