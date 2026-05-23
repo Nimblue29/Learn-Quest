@@ -51,27 +51,7 @@
             android:screenOrientation="portrait"
             android:exported="false" />
 
-        <activity
-            android:name="com.example.learnquest.End_Game"
-            android:exported="false" />
-        <activity
-            android:name="com.example.learnquest.science_category"
-            android:exported="false" />
-        <activity
-            android:name="com.example.learnquest.Addition_Game"
-            android:exported="false" />
-        <activity
-            android:name="com.example.learnquest.Math_Level"
-            android:exported="false" />
-        <activity
-            android:name="com.example.learnquest.GameOption"
-            android:exported="false" />
-        <activity
-            android:name="com.example.learnquest.science_quiz"
-            android:exported="false" />
-        <activity
-            android:name="com.example.learnquest.MainActivity"
-            android:exported="false" />
+
 
         <meta-data
             android:name="preloaded_fonts"

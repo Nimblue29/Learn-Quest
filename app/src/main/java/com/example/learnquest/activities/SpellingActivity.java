@@ -23,16 +23,41 @@ import java.util.List;
 public class SpellingActivity extends AppCompatActivity {
 
     // ── Data ──────────────────────────────────────────────────────────────────
-    private static final String[][] WORDS = {
-        // { word, emoji, hint label }
+    private static final String[][] EASY_WORDS = {
         {"CAT",  "🐱", "What is this?"},
         {"DOG",  "🐶", "What is this?"},
         {"SUN",  "☀️", "What is in the sky?"},
         {"BEE",  "🐝", "What is this bug?"},
-        {"FISH", "🐟", "What swims in water?"},
         {"COW",  "🐄", "What lives on a farm?"},
         {"HEN",  "🐔", "What lays eggs?"},
+        {"PIG",  "🐷", "What oinks?"},
+        {"BAT",  "🦇", "What flies at night?"},
+        {"ANT",  "🐜", "What is this bug?"},
+        {"FOX",  "🦊", "What is this animal?"},
     };
+
+    private static final String[][] MEDIUM_WORDS = {
+        {"BIRD", "🐦", "What flies?"},
+        {"FISH", "🐟", "What swims in water?"},
+        {"FROG", "🐸", "What says ribbit?"},
+        {"DUCK", "🦆", "What quacks?"},
+        {"LION", "🦁", "King of the jungle?"},
+        {"BEAR", "🐻", "What loves honey?"},
+        {"WOLF", "🐺", "What howls at the moon?"},
+        {"CRAB", "🦀", "What has claws?"},
+    };
+
+    private static final String[][] HARD_WORDS = {
+        {"TIGER", "🐯", "Big striped cat?"},
+        {"HORSE", "🐴", "What do you ride?"},
+        {"ZEBRA", "🦓", "What has stripes?"},
+        {"SHARK", "🦈", "Big fish in the sea?"},
+        {"SNAKE", "🐍", "What slithers?"},
+        {"SHEEP", "🐑", "What gives wool?"},
+        {"PANDA", "🐼", "What eats bamboo?"},
+    };
+
+    private String[][] currentWords;
 
     private static final int[] TILE_COLORS = {
         R.drawable.bg_tile_pink,
@@ -52,7 +77,7 @@ public class SpellingActivity extends AppCompatActivity {
     private List<Character> shuffledLetters = new ArrayList<>();
 
     // ── Views ─────────────────────────────────────────────────────────────────
-    private TextView tvStars, tvWordNum, tvProgressPct;
+    private TextView tvStars, tvWordNum, tvProgressPct, tvLevelBadge;
     private TextView tvWordEmoji, tvWordLabel;
     private TextView heart1, heart2, heart3;
     private LinearLayout dropSlotsLayout, progressDotsLayout;
@@ -74,6 +99,27 @@ public class SpellingActivity extends AppCompatActivity {
         prefs = getSharedPreferences("learnquest_prefs", MODE_PRIVATE);
         bindViews();
         setClickListeners();
+        String difficulty = getIntent().getStringExtra("difficulty");
+        if (difficulty == null) difficulty = "easy";
+        
+        tvLevelBadge.setText("🌟 DIFFICULTY: " + difficulty.toUpperCase());
+        
+        List<String[]> wordList;
+        if (difficulty.equals("hard")) {
+            wordList = new ArrayList<>(Arrays.asList(HARD_WORDS));
+        } else if (difficulty.equals("medium")) {
+            wordList = new ArrayList<>(Arrays.asList(MEDIUM_WORDS));
+        } else {
+            wordList = new ArrayList<>(Arrays.asList(EASY_WORDS));
+        }
+        
+        Collections.shuffle(wordList);
+        int numWords = Math.min(5, wordList.size());
+        currentWords = new String[numWords][3];
+        for(int i = 0; i < numWords; i++) {
+            currentWords[i] = wordList.get(i);
+        }
+
         loadWord();
     }
 
@@ -81,6 +127,7 @@ public class SpellingActivity extends AppCompatActivity {
         tvStars           = findViewById(R.id.tvStars);
         tvWordNum         = findViewById(R.id.tvWordNum);
         tvProgressPct     = findViewById(R.id.tvProgressPct);
+        tvLevelBadge      = findViewById(R.id.tvLevelBadge);
         tvWordEmoji       = findViewById(R.id.tvWordEmoji);
         tvWordLabel       = findViewById(R.id.tvWordLabel);
         heart1            = findViewById(R.id.heart1);
@@ -115,23 +162,23 @@ public class SpellingActivity extends AppCompatActivity {
 
     // ── Word Loading ──────────────────────────────────────────────────────────
     private void loadWord() {
-        if (currentWordIdx >= WORDS.length) {
+        if (currentWordIdx >= currentWords.length) {
             showCompletionDialog();
             return;
         }
 
-        String word  = WORDS[currentWordIdx][0];
-        String emoji = WORDS[currentWordIdx][1];
-        String label = WORDS[currentWordIdx][2];
+        String word  = currentWords[currentWordIdx][0];
+        String emoji = currentWords[currentWordIdx][1];
+        String label = currentWords[currentWordIdx][2];
 
         filled     = new char[word.length()];
         tileSlotMap = new int[0]; // reset later after shuffle
 
         tvWordEmoji.setText(emoji);
         tvWordLabel.setText(label);
-        tvWordNum.setText("WORD " + (currentWordIdx + 1) + " OF " + WORDS.length);
+        tvWordNum.setText("WORD " + (currentWordIdx + 1) + " OF " + currentWords.length);
 
-        int pct = (currentWordIdx * 100) / WORDS.length;
+        int pct = (currentWordIdx * 100) / currentWords.length;
         tvProgressPct.setText(pct + "%");
         animateProgressBar(pct);
 
@@ -159,7 +206,7 @@ public class SpellingActivity extends AppCompatActivity {
         progressDotsLayout.removeAllViews();
         int dp10 = dpToPx(10);
         int dp4  = dpToPx(4);
-        for (int i = 0; i < WORDS.length; i++) {
+        for (int i = 0; i < currentWords.length; i++) {
             View dot = new View(this);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp10, dp10);
             lp.setMargins(dp4, 0, dp4, 0);
@@ -296,7 +343,7 @@ public class SpellingActivity extends AppCompatActivity {
     private void clearAll() {
         Arrays.fill(filled, (char) 0);
         Arrays.fill(tileSlotMap, -1);
-        for (int i = 0; i < WORDS[currentWordIdx][0].length(); i++) {
+        for (int i = 0; i < currentWords[currentWordIdx][0].length(); i++) {
             TextView slot = getSlot(i);
             slot.setText("");
             slot.setBackgroundResource(R.drawable.bg_slot_empty);
@@ -309,7 +356,7 @@ public class SpellingActivity extends AppCompatActivity {
 
     // ── Hint ───────────────────────────────────────────────────────────────────
     private void useHint() {
-        String word = WORDS[currentWordIdx][0];
+        String word = currentWords[currentWordIdx][0];
         if (filled[0] != 0) return; // first slot already filled
 
         // Fill first slot with correct letter
@@ -332,7 +379,7 @@ public class SpellingActivity extends AppCompatActivity {
 
     // ── Check Answer ───────────────────────────────────────────────────────────
     private void checkAnswer() {
-        String word = WORDS[currentWordIdx][0];
+        String word = currentWords[currentWordIdx][0];
         // Check all slots filled
         for (char c : filled) {
             if (c == 0) { highlightEmptySlots(); return; }
@@ -396,8 +443,8 @@ public class SpellingActivity extends AppCompatActivity {
     }
 
     private void showWordSuccess() {
-        String word  = WORDS[currentWordIdx][0];
-        String emoji = WORDS[currentWordIdx][1];
+        String word  = currentWords[currentWordIdx][0];
+        String emoji = currentWords[currentWordIdx][1];
         String starsEarned = lives == 3 ? "⭐⭐⭐" : lives == 2 ? "⭐⭐" : "⭐";
 
         new AlertDialog.Builder(this)

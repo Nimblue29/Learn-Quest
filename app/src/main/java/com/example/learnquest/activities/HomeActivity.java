@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.learnquest.R;
 import com.example.learnquest.utils.SoundManager;
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * HomeActivity — game selection hub.
@@ -86,8 +87,36 @@ public class HomeActivity extends AppCompatActivity {
         cardSpelling.setOnClickListener(v -> {
             SoundManager.get(this).playClick();
             pulseCard(v);
-            v.postDelayed(() -> startActivity(
-                    new Intent(this, SpellingActivity.class)), 150);
+            
+            android.view.View dialogView = getLayoutInflater().inflate(R.layout.dialog_difficulty, null);
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .create();
+                
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            }
+            
+            dialogView.findViewById(R.id.btnEasy).setOnClickListener(btn -> {
+                dialog.dismiss();
+                Intent intent = new Intent(this, SpellingActivity.class);
+                intent.putExtra("difficulty", "easy");
+                startActivity(intent);
+            });
+            dialogView.findViewById(R.id.btnMedium).setOnClickListener(btn -> {
+                dialog.dismiss();
+                Intent intent = new Intent(this, SpellingActivity.class);
+                intent.putExtra("difficulty", "medium");
+                startActivity(intent);
+            });
+            dialogView.findViewById(R.id.btnHard).setOnClickListener(btn -> {
+                dialog.dismiss();
+                Intent intent = new Intent(this, SpellingActivity.class);
+                intent.putExtra("difficulty", "hard");
+                startActivity(intent);
+            });
+            
+            dialog.show();
         });
 
         cardMath.setOnClickListener(v -> {
